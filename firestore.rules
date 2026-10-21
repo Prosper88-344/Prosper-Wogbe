@@ -1,0 +1,48 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isValidId(id) {
+      return id is string && id.matches('^[a-zA-Z0-9_-]{1,64}$');
+    }
+
+    function isValidInquiry(data) {
+      return data.keys().hasAll(['name', 'email', 'subject', 'message', 'createdAt'])
+        && data.keys().hasOnly(['name', 'email', 'subject', 'message', 'createdAt', 'status'])
+        && data.name is string && data.name.size() >= 2 && data.name.size() <= 100
+        && data.email is string && data.email.size() >= 5 && data.email.size() <= 150
+        && data.subject is string && data.subject.size() >= 2 && data.subject.size() <= 150
+        && data.message is string && data.message.size() >= 5 && data.message.size() <= 2000
+        && data.createdAt is string && data.createdAt.size() <= 50
+        && (!('status' in data) || (data.status is string && data.status in ['new', 'read', 'archived']));
+    }
+
+    function isValidEndorsement(data) {
+      return data.keys().hasAll(['authorName', 'authorRole', 'organization', 'message', 'createdAt'])
+        && data.keys().hasOnly(['authorName', 'authorRole', 'organization', 'message', 'createdAt', 'skillFocus'])
+        && data.authorName is string && data.authorName.size() >= 2 && data.authorName.size() <= 100
+        && data.authorRole is string && data.authorRole.size() >= 2 && data.authorRole.size() <= 100
+        && data.organization is string && data.organization.size() >= 2 && data.organization.size() <= 100
+        && data.message is string && data.message.size() >= 10 && data.message.size() <= 1500
+        && data.createdAt is string && data.createdAt.size() <= 50
+        && (!('skillFocus' in data) || (data.skillFocus is string && data.skillFocus.size() <= 50));
+    }
+
+    match /inquiries/{inquiryId} {
+      allow get, list: if false;
+      allow create: if isValidId(inquiryId) && isValidInquiry(request.resource.data);
+      allow update, delete: if false;
+    }
+
+    match /endorsements/{endorsementId} {
+      allow read: if true;
+      allow create: if isValidId(endorsementId) && isValidEndorsement(request.resource.data);
+      allow update, delete: if false;
+    }
+
+    // Default catch-all denies access to any other collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

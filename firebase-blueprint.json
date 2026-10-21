@@ -1,0 +1,97 @@
+{
+  "entities": {
+    "Inquiry": {
+      "title": "Contact Inquiry",
+      "description": "Message submitted by a recruiter, hiring manager, or visitor via the contact form.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full name of the sender.",
+          "minLength": 2,
+          "maxLength": 100
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the sender.",
+          "format": "email",
+          "minLength": 5,
+          "maxLength": 150
+        },
+        "subject": {
+          "type": "string",
+          "description": "Subject or role title of the inquiry.",
+          "minLength": 2,
+          "maxLength": 150
+        },
+        "message": {
+          "type": "string",
+          "description": "Body message or inquiry details.",
+          "minLength": 5,
+          "maxLength": 2000
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp when the message was sent."
+        },
+        "status": {
+          "type": "string",
+          "description": "Current processing status of the inquiry.",
+          "enum": ["new", "read", "archived"]
+        }
+      },
+      "required": ["name", "email", "subject", "message", "createdAt"]
+    },
+    "Endorsement": {
+      "title": "Professional Endorsement",
+      "description": "Recommendation or testimonial from colleagues, mentors, or clients.",
+      "type": "object",
+      "properties": {
+        "authorName": {
+          "type": "string",
+          "description": "Name of the person providing the endorsement.",
+          "minLength": 2,
+          "maxLength": 100
+        },
+        "authorRole": {
+          "type": "string",
+          "description": "Job title or relationship to Prosper (e.g. IT Supervisor, Senior Engineer, GCTU Lecturer).",
+          "minLength": 2,
+          "maxLength": 100
+        },
+        "organization": {
+          "type": "string",
+          "description": "Company, bank branch, or institution (e.g. National Investment Bank, GCTU).",
+          "minLength": 2,
+          "maxLength": 100
+        },
+        "message": {
+          "type": "string",
+          "description": "Endorsement testimonial content.",
+          "minLength": 10,
+          "maxLength": 1500
+        },
+        "skillFocus": {
+          "type": "string",
+          "description": "Key IT area commended (e.g. Hardware Troubleshooting, Systems Administration, Reliability).",
+          "maxLength": 50
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp when the endorsement was submitted."
+        }
+      },
+      "required": ["authorName", "authorRole", "organization", "message", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/inquiries/{inquiryId}": {
+      "schema": "Inquiry",
+      "description": "Recruitment inquiries, job offers, and messages sent via the contact form."
+    },
+    "/endorsements/{endorsementId}": {
+      "schema": "Endorsement",
+      "description": "Public peer recommendations and IT professional testimonials."
+    }
+  }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>Prosper Wogbe | IT Support Specialist &amp; Founder of Tassu Technologies</title>
+  <meta name="title" content="Prosper Wogbe | IT Support Specialist &amp; Founder of Tassu Technologies" />
+  <meta name="description" content="Professional portfolio of Prosper Wogbe, IT Support Specialist &amp; Founder of Tassu Technologies in Accra, Ghana. Hands-on professional IT support, systems administration, and networking." />
+  <meta name="keywords" content="Prosper Wogbe, IT Support Specialist, Founder of Tassu Technologies, Systems Administration, Systems Administrator, Networking, Troubleshooting, Accra Ghana, GCTU, Professional IT Support" />
+  <meta name="author" content="Prosper Wogbe" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Prosper Wogbe | IT Support Specialist &amp; Founder of Tassu Technologies" />
+  <meta property="og:description" content="Portfolio of Prosper Wogbe: 'Tech that Works'. IT Support Specialist &amp; Founder of Tassu Technologies with practical professional IT support, systems administration, and networking experience." />
+  <meta property="og:image" content="/assets/profile.webp" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Prosper Wogbe | IT Support Specialist &amp; Founder of Tassu Technologies" />
+  <meta name="twitter:description" content="Portfolio of Prosper Wogbe: 'Tech that Works'. IT Support Specialist &amp; Founder of Tassu Technologies with practical professional IT support, systems administration, and networking experience." />
+  <meta name="twitter:creator" content="@him_atsu" />
+
+  <!-- Google Fonts: Barlow Condensed (Display), IBM Plex Sans (Body/Sans), IBM Plex Mono (Data/Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Structured Data (JSON-LD) for Search Engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Prosper Wogbe",
+    "jobTitle": "IT Support Specialist; Founder of Tassu Technologies",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Tassu Technologies"
+    },
+    "description": "IT Support, Systems Administration, and Networking specialist in Accra, Ghana.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Accra",
+      "addressCountry": "GH"
+    },
+    "alumnusOf": [
+      {
+        "@type": "EducationalOrganization",
+        "name": "Ghana Communication Technology University (GCTU)"
+      }
+    ],
+    "email": "mailto:prosperw686@gmail.com",
+    "telephone": ["+233244937706", "+233204965902"],
+    "sameAs": [
+      "https://www.linkedin.com/in/prosper-wogbe-3486a941b/",
+      "https://x.com/him_atsu"
+    ]
+  }
+  </script>
+
+  <!-- Color Scheme and Theme Color -->
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#F5F7FB" id="theme-color-meta" />
+
+  <!-- Inline Script to set data-theme before first paint (no flash of wrong theme) -->
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('theme');
+        var theme = (saved === 'dark' || saved === 'light') ? saved : 'light';
+        document.documentElement.dataset.theme = theme;
+        var meta = document.getElementById('theme-color-meta');
+        if (meta) {
+          meta.setAttribute('content', theme === 'dark' ? '#0B101E' : '#F4F6FA');
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body class="bg-[var(--bg)] text-[var(--ink)] antialiased min-h-screen">
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--accent)] focus:text-[var(--on-accent)] focus:font-semibold focus:rounded-md focus:outline-2 focus:outline-offset-2 focus:outline-[var(--accent)]">
+    Skip to main content
+  </a>
+
+  <!-- Root mount for React application -->
+  <div id="root"></div>
+
+  <!-- Vite module entry point (relative path for robust bundler resolution) -->
+  <script type="module" src="./src/main.tsx"></script>
+</body>
+</html>
