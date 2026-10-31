@@ -1,0 +1,299 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Fonts */
+    --font-display: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif;
+    --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, Consolas, monospace;
+
+    /* Light Theme Tokens - clean, crisp, unified light theme across the entire site */
+    --bg: #F4F6FA;
+    --surface: #FFFFFF;
+    --ink: #0F172A;
+    --ink-muted: #52607A;
+    --rule: #DCE2EE;
+    --accent: #1FA358;
+    --accent-hover: #178345;
+    --accent-ink: #0E6533;
+    --on-accent: #FFFFFF;
+    --status: #1FA358;
+    --band: #FFFFFF;
+    --band-ink: #0F172A;
+    --band-muted: #52607A;
+    --band-rule: #DCE2EE;
+    --logo: var(--accent);
+  }
+
+  [data-theme="dark"] {
+    /* Dark Theme Tokens - deep, refined, unified dark theme across the entire site */
+    --bg: #0B101E;
+    --surface: #12192C;
+    --ink: #EEF2FF;
+    --ink-muted: #9BA7C2;
+    --rule: #202B47;
+    --accent: #46C47F;
+    --accent-hover: #6FE3A0;
+    --accent-ink: #55DC92;
+    --on-accent: #0A0F1F;
+    --status: var(--accent);
+    --band: #080C17;
+    --band-ink: #EEF2FF;
+    --band-muted: #9BA7C2;
+    --band-rule: #1E2844;
+    --logo: var(--accent);
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    background-color: var(--bg);
+    color: var(--ink);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.65;
+    font-weight: 400;
+    color: var(--ink);
+    background-color: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (max-width: 639px) {
+    body {
+      font-size: 16.5px;
+      line-height: 1.65;
+    }
+  }
+
+  /* Universal Accessible Keyboard Focus Outline */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* Transition rules: 150ms hover/focus transitions only */
+  a, button, input, textarea, select {
+    transition-duration: 150ms;
+    transition-property: color, background-color, border-color, text-decoration-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Display Font (Weight 700, UPPERCASE, letter-spacing 0.02em): ONLY hero h1, section h2s, and nav wordmark */
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: clamp(2.25rem, 6.5vw, 5.25rem);
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+
+  @media (min-width: 640px) {
+    h1 {
+      line-height: 0.95;
+    }
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: clamp(1.75rem, 4.5vw, 3rem);
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  @media (min-width: 640px) {
+    h2 {
+      line-height: 1;
+    }
+  }
+
+  /* Sans Font: h3 and card titles (18px/600) */
+  h3 {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.4;
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  @media (min-width: 640px) {
+    h3 {
+      font-size: 18px;
+      line-height: 1.35;
+    }
+  }
+
+  /* Mono Font: phone numbers, email, handles, section index numerals, label tape, tool strip, and Accra clock */
+  .font-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Buttons: 14px/600, not uppercase */
+  button,
+  .btn {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: none;
+  }
+}
+
+
+/* Text links: --accent-ink with 1px underline (offset 3px) that becomes 2px on hover */
+.accent-link {
+  color: var(--accent-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.accent-link:hover,
+.accent-link:focus-visible {
+  text-decoration-thickness: 2px;
+}
+
+/* Secondary links inside band: --band-ink with a 2px --accent underline (offset 4px) */
+.band-link {
+  color: var(--band-ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--accent);
+}
+.band-link:hover,
+.band-link:focus-visible {
+  color: var(--band-ink);
+  text-decoration-color: var(--accent-hover);
+}
+
+/* Logo responsive wordmark: hide text visually at 720px - 899px, preserve for screen readers */
+@media (min-width: 720px) and (max-width: 899px) {
+  .logo-wordmark-responsive {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border-width: 0 !important;
+  }
+}
+
+/* Horizontal nav link cells: 5 items (Experience, Skills, Services, Labs, Contact) scaled to fit smoothly */
+.nav-link-cell {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 64px;
+  padding-left: 14px;
+  padding-right: 14px;
+  white-space: nowrap;
+  border-radius: 0;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  outline: none;
+  color: var(--band-muted);
+  background-color: transparent;
+  transform: translateY(0);
+  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1), background-color 150ms cubic-bezier(0.4, 0, 0.2, 1), border-color 150ms cubic-bezier(0.4, 0, 0.2, 1), transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 1040px) {
+  .nav-link-cell {
+    font-size: 13px;
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+}
+
+@media (max-width: 820px) {
+  .nav-link-cell {
+    font-size: 12.5px;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
+
+.nav-link-cell:hover {
+  color: var(--band-ink);
+  background-color: color-mix(in srgb, var(--band-rule) 50%, transparent);
+  transform: translateY(-2px);
+}
+
+.nav-link-cell[aria-current="true"] {
+  color: var(--band-ink);
+  font-weight: 600;
+  background-color: color-mix(in srgb, var(--band-rule) 40%, transparent);
+  border-bottom-color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link-cell {
+    transition: none !important;
+    transform: none !important;
+  }
+  .nav-link-cell:hover {
+    transform: none !important;
+  }
+}
+
+/* Section scroll margins to prevent sticky header occlusion (header is 64px, 5rem = 80px) */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Subtle Fade-In-Up Entrance Animation for Sections */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 550ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up,
+  .fade-in-up-section {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+

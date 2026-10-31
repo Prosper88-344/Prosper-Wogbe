@@ -137,6 +137,6 @@ Click the link in the terminal or navigate to `http://localhost:3000` in your we
 - **Title**: IT Support Specialist · Founder of Tassu Technologies
 - **Location**: Accra, Ghana
 - **Email**: [prosperw686@gmail.com](mailto:prosperw686@gmail.com)
-- **LinkedIn**: [https://www.linkedin.com/in/prosper-wogbe-3486a941b/](https://www.linkedin.com/in/prosper-wogbe-3486a941b/)
+- **LinkedIn**: [https://www.linkedin.com/in/prosper-wogbe-1178a3297/](https://www.linkedin.com/in/prosper-wogbe-1178a3297/)
 - **X (Twitter)**: [@him_atsu](https://x.com/him_atsu)
 - **Phone**: +233 24 493 7706 (MTN) / +233 20 496 5902 (Telecel)
