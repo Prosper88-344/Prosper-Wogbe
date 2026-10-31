@@ -51,8 +51,6 @@ export const Hero: React.FC = () => {
                 <a
                   href={portfolioData.personal.cvUrl}
                   download="Prosper-Wogbe-CV.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="band-link group inline-flex items-center gap-1.5 font-sans font-semibold text-[13.5px] sm:text-[14px] text-[var(--band-ink)] focus-visible:outline-2 focus-visible:outline-[var(--accent)] focus-visible:outline-offset-2 rounded"
                 >
                   <Download className="w-4 h-4 text-[var(--band-muted)] group-hover:text-[var(--band-ink)] transition-colors" aria-hidden="true" />

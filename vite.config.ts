@@ -3,9 +3,33 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import { defineConfig } from 'vite';
 
+function cvDownloadHeadersPlugin() {
+  return {
+    name: 'cv-download-headers',
+    configureServer(server: any) {
+      server.middlewares.use((req: any, res: any, next: any) => {
+        if (req.url && req.url.includes('Prosper-Wogbe-CV.pdf')) {
+          res.setHeader('Content-Type', 'application/pdf');
+          res.setHeader('Content-Disposition', 'attachment; filename="Prosper-Wogbe-CV.pdf"');
+        }
+        next();
+      });
+    },
+    configurePreviewServer(server: any) {
+      server.middlewares.use((req: any, res: any, next: any) => {
+        if (req.url && req.url.includes('Prosper-Wogbe-CV.pdf')) {
+          res.setHeader('Content-Type', 'application/pdf');
+          res.setHeader('Content-Disposition', 'attachment; filename="Prosper-Wogbe-CV.pdf"');
+        }
+        next();
+      });
+    },
+  };
+}
+
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), cvDownloadHeadersPlugin()],
     resolve: {
       alias: {
         '@': path.resolve(import.meta.dirname, '.'),

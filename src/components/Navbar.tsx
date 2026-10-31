@@ -366,8 +366,6 @@ export const Navbar: React.FC = () => {
                 <a
                   href={portfolioData.personal.cvUrl}
                   download="Prosper-Wogbe-CV.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="w-full h-[40px] inline-flex items-center justify-center gap-2 rounded-[8px] border border-[var(--band-rule)] bg-transparent text-[var(--band-ink)] hover:bg-[color-mix(in_srgb,var(--band-rule)_50%,transparent)] font-semibold text-[14px] transition-colors"
                 >
                   <Download className="w-4 h-4 text-[var(--band-ink)]" aria-hidden="true" />
